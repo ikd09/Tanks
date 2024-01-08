@@ -1,0 +1,174 @@
+[package]
+id = "epredoi2oil6hrnteewsvsgxt64idrhl"
+name = "tanks-game"
+version = "0.0.13"
+content = { type = "Playable" }
+ambient_version = "0.3.2-nightly-2023-11-04"
+
+[messages.Bonk]
+description = "Collision between two objects."
+fields = { collision_sound_effect = "I32", emitter = "EntityId" }
+
+[messages.EntityIdMessage.fields]
+entity_id = "EntityId"
+
+[messages.Respawn.fields]
+sent_respawn_command = "Bool"
+
+[messages.Movement.fields]
+player_movement = "F32"
+speed = "F32"
+turret_turning = "I32"
+ray_origin = "Vec3"
+ray_dir = "Vec3"
+fire = "Bool"
+drifting = "Bool"
+
+[messages.SummonExplosion.fields]
+translation = "Vec3"
+scale = "F32"
+
+[messages.KilledOther.fields]
+killed_other_player = "Bool"
+
+[components.tank_death_time]
+name = "Tank Death Time"
+description = "Attached to the tank; holds the time of death for respawn mechanics."
+type = "Duration"
+attributes = ["Networked", "Debuggable"]
+
+[components.tank_vertical_velocity]
+name = "Tank Vertical Velocity"
+description = "Attached to the tank; holds the vertical velocity for easy setting."
+type = "F32"
+attributes = ["Networked", "Debuggable"]
+
+[components.track_spawn_time]
+name = "Track Spawn Time"
+description = "Attached to the tank treadmark; holds the time the mark was placed."
+type = "Duration"
+attributes = ["Networked", "Debuggable"]
+
+[components.last_hit_normal]
+name = "Last Hit Normal"
+description = "Attached to the bullet; holds the normal of the last wall it hit."
+type = "Vec3"
+attributes = ["Networked", "Debuggable"]
+
+[components.time_of_last_smoke_emission]
+name = "Time of Last Smoke Emission"
+description = "Attached to bullet; holds the last time the bullet emitted smoke."
+type = "Duration"
+attributes = ["Networked", "Debuggable"]
+
+[components.kills_to_deaths]
+name = "Kills to Deaths"
+description = "Attached to tank; holds the kills and deaths that a certain player has."
+type = "Vec2"
+attributes = ["Networked", "Debuggable"]
+
+[components.wall_required_translation]
+name = "Wall Required Translation"
+type = "Vec3"
+attributes = ["Networked", "Debuggable"]
+
+[components.wall_required_rotation]
+name = "Wall Required Rotation"
+type = "F32"
+attributes = ["Networked", "Debuggable"]
+
+[components.wall]
+name = "Wall"
+description = "This object is a wall!"
+type = "I32"
+attributes = ["Networked", "Debuggable"]
+
+[components.bullet_bounce_count]
+name = "Bounce Count of Bullet"
+description = "Attached to bullet; holds the number of times that bullet has bounced."
+type = "I32"
+attributes = ["Networked", "Debuggable"]
+
+[components.smoke_trail_velocity]
+name = "Smoke Trail Velocity"
+description = "Attached to the smoke particles from the smoke trail of the bullets; holds it's directional vector with magnitude."
+type = "Vec3"
+attributes = ["Networked", "Debuggable"]
+
+[components.player_targetter_ref]
+name = "Player Targetter Ref"
+description = "Attached to the player; references the preview cube the player is controlling."
+type = "EntityId"
+attributes = ["Networked", "Debuggable"]
+
+[components.last_shot_time]
+name = "Last Shot Time"
+description = "Attached to player; holds the last time a bullet was shot."
+type = "Duration"
+attributes = ["Networked", "Debuggable"]
+
+[components.player_speed]
+name = "Player Speed"
+description = "Attached to the player; speed of the player's tank"
+type = "F32"
+attributes = ["Networked", "Debuggable"]
+
+[components.game_player]
+name = "Player"
+description = "Attached to the player; holds specific shooter id"
+type = "EntityId"
+attributes = ["Networked", "Debuggable"]
+
+[components.smoke_dissipation_delay]
+name = "Smoke Parenting"
+description = "Attached to the smoke particles; holds their dissipation delays"
+type = "F32"
+attributes = ["Networked", "Debuggable"]
+
+[components.cannon_smoke_location]
+name = "Smoke Parenting"
+description = "Attached to the smoke particles; holds the location of the endpoint of the cannon"
+type = "Vec3"
+attributes = ["Networked", "Debuggable"]
+
+[components.bullet_movement]
+name = "Bullet Movement"
+description = "Attached to bullet; direction vector of the bullet"
+type = "Vec3"
+attributes = ["Networked", "Debuggable"]
+
+[components.treadmark_display_timer]
+name = "Treadmark Display Timer"
+description = "Attached to a treadmark; holds the number of seconds until the tread track disappears"
+type = "Duration"
+attributes = ["Networked", "Debuggable"]
+
+[components.time_between_treadmarks]
+name = "Time Between Treadmarks"
+description = "Attached to a tank; holds the time the last tread was placed."
+type = "Duration"
+attributes = ["Networked", "Debuggable"]
+
+[components.bullet_owner]
+name = "Bullet Owner"
+description = "Attached to player; the owner's id"
+type = "EntityId"
+attributes = ["Networked", "Debuggable"]
+
+[components.turret_ref]
+name = "Turret Ref"
+description = "Attached to the player; references the turret that is parented to the tank."
+type = "EntityId"
+attributes = ["Networked", "Debuggable"]
+
+[components.camera_ref]
+name = "Camera Ref"
+description = "Attached to the camera; references the camera."
+type = "EntityId"
+attributes = ["Networked", "Debuggable"]
+
+[components.bullet_fire_timer]
+name = "Bullet Fire Explosion Timer"
+description = "Attached to the nozzle of the tank; holds the expiration of the tank's bullet fire plane"
+type = "Duration"
+attributes = ["Networked", "Debuggable"]

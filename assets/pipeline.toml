@@ -1,0 +1,16 @@
+[[pipelines]]
+type = "Models"
+
+[pipelines.collider]
+type = "FromModel"
+
+[[pipelines]]
+type = "Audio"
+
+[[pipelines]]
+type = "Materials"
+
+[pipelines.importer]
+type = "Single"
+name = "squirrel"
+base_color = "TankTreadMark.png"
